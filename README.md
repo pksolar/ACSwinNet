@@ -52,5 +52,10 @@ Set up your environment:
 ```bash
  python ./infer.py --test_images_file dataset/test/*.nii.gz --model_file pth   --results_dir result_test/ --ref_img_path path/to/ref_img
 ```
-## Reference
-我在我的项目中借鉴了 [JohnDoe 的代码仓库](https://github.com/JohnDoe/awesome-project)，并进行了适当的修改和使用。
+## Data
+We are currently in the process of applying to make the dataset public. Once the application is approved, we will promptly update the dataset in the code repository.
+
+## Acknowledgment
+
+We have referenced Lucas Mansilla's code([https://github.com/JohnDoe/awesome-project](https://github.com/lucasmansilla/ACRN_Chest_X-ray_IA)) repository in my project, making appropriate modifications and utilization.
+
