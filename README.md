@@ -1,7 +1,6 @@
 # ACSwinNet: A Deep Learning-Based Rigid Registration Method for Head-Neck CT-CBCT Images in Image-Guided Radiotherapy
 
 
-
 ## Introduction
 
 By integrating a hybrid architecture that combines SwinTransformer with traditional Convolutional Neural Networks (CNNs),
@@ -24,6 +23,12 @@ Metric Network:
 
 ![image](https://github.com/pksolar/ACSwinNet/assets/37496977/de42ed0d-0560-46f9-97cf-f343f7c8e4db)
 
+## Operating Environment:
+
+Operating System: Windows 10
+CPU: i9-10900k
+RAM: 32GB
+GPU: Nvidia Geforce RTX 3090(24GB)
 
 ## Installation
 
@@ -33,7 +38,7 @@ Set up your environment:
  pip install -r requirements.txt
 ```
 ## Usage
-1. Train  DAE model. To obtain the weight files of the segmentation image encoder and the original image encoder by training the DAE model, the command line is:
+1. Train  DAE model. To obtain the weight files of the segmentation image encoder and the original image encoder by training the DAE model. the command line is:
 ```bash
  python ./DAE_model/train.py --image_type image --train_images_file path/to/train_images    --save_model_path path/to/save_model --ref_img_path path/to/ref_img
 ```
@@ -44,7 +49,10 @@ Set up your environment:
 ```bash
  python ./DAE_model/infer.py --image_type image --test_images_file path/to/test_images  --save_model_path path/to/save_model --ref_img_path path/to/ref_img
 ```
-3. Train  ACSwinNet model. 
+```bash
+ python ./DAE_model/infer.py --image_type seg --test_images_file path/to/test_seg  --save_model_path path/to/save_model --ref_img_path path/to/ref_img
+```
+3. Train  ACSwinNet model. The _encoder_image.pth_ file is utilized by the metric network, while the _encoder_seg.pth_ file is employed to encode the segmentations.
 ```bash
  python ./train.py --train_images_file dataset/train/*.nii.gz --val_images_file dataset/val/*.nii.gz --autoencoder_file_seg pth/encoder_seg.pth --autoencoder_file_image pth/encoder_image.pth  --results_dir result/ --ref_img_path path/to/ref_img
 ```
