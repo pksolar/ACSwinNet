@@ -65,5 +65,10 @@ We are currently in the process of applying to make the dataset public. Once the
 
 ## Acknowledgment
 
-We have referenced Lucas Mansilla's code([https://github.com/JohnDoe/awesome-project](https://github.com/lucasmansilla/ACRN_Chest_X-ray_IA)) repository in my project, making appropriate modifications and utilization.
+We have referenced Lucas Mansilla's code([https://github.com/JohnDoe/awesome-project](https://github.com/lucasmansilla/ACRN_Chest_X-ray_IA)) 
+Guha Balakrishnan's code(http://voxelmorph.csail.mit.edu),
+Liu's code(https://github.com/microsoft/Swin-Transformer)
+in my project, making appropriate modifications and utilization.
+Thank you for the contributions of these authors.
+
 
