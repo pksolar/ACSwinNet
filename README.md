@@ -70,5 +70,6 @@ Guha Balakrishnan's code(http://voxelmorph.csail.mit.edu),
 Liu's code(https://github.com/microsoft/Swin-Transformer)
 in my project, making appropriate modifications and utilization.
 Thank you for the contributions of these authors.
-
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
 
