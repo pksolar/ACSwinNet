@@ -795,9 +795,9 @@ class RigidTransformer(nn.Module):
         theta_x = Rigid[:, 0]
         theta_y = Rigid[:, 1]
         theta_z = Rigid[:, 2]
-        trans_x = translate[:, 0] / 160.0
-        trans_y = translate[:, 1] / 192.0
-        trans_z = translate[:, 2] / 160.0
+        trans_x = translate[:, 0] / 240.0
+        trans_y = translate[:, 1] / 240.0
+        trans_z = translate[:, 2] / 64.0
 
         rot_mat_x = torch.stack([torch.stack([torch.ones_like(theta_x), torch.zeros_like(theta_x), torch.zeros_like(theta_x)], dim=1), torch.stack([torch.zeros_like(theta_x), torch.cos(theta_x), -torch.sin(theta_x)], dim=1), torch.stack([torch.zeros_like(theta_x), torch.sin(theta_x), torch.cos(theta_x)], dim=1)], dim=2).cuda()
         rot_mat_y = torch.stack([torch.stack([torch.cos(theta_y), torch.zeros_like(theta_y), torch.sin(theta_y)], dim=1), torch.stack([torch.zeros_like(theta_y), torch.ones_like(theta_x), torch.zeros_like(theta_x)], dim=1), torch.stack([-torch.sin(theta_y), torch.zeros_like(theta_y), torch.cos(theta_y)], dim=1)], dim=2).cuda()
