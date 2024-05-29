@@ -42,9 +42,9 @@ class Encoder(nn.Module):
         self.encoder3 = Conv(16, 32, 3)
         self.encoder4 = Conv(32, 64, 3)
         self.encoder5 = Conv(64, 128, 3)
-        self.encoder6 = Conv(128, 256, 3)
-        self.encoder_linear = nn.Linear(256*3*3*3, 512)
-    def encode(self, x): # x 160 192 160
+        self.encoder6 = Conv(128, 256, 3,stride=(2,2,1))
+        self.encoder_linear = nn.Linear(8192, 512) #b,c,其中b=1,c=512
+    def encode(self, x): # x
         x = self.encoder1(x)
         x = self.relu(x)
         x = self.encoder2(x)
@@ -93,19 +93,19 @@ class Decoder(nn.Module):
         # self.unflatten = nn.Unflatten(dim=1,
         #                               unflattened_size=(512, 3, 3))
 
-        self.deconv1 = DeConv(256,128,3,2,(1,1,1),(0,1,0))
-        self.deconv2 = DeConv(128, 64, 3, 2, 1,1)
+        self.deconv1 = DeConv(256,128,3,(2,2,1),(1,1,1),(1,1,0))
+        self.deconv2 = DeConv(128, 64, 3, 2, 1,(0,0,1))
         self.deconv3 = DeConv(64, 32, 3, 2,1, 1)
         self.deconv4 = DeConv(32, 16, 3, 2, 1,1)
         self.deconv5 = DeConv(16, 8, 3, 2, 1,1) #8,33,120,120
         self.deconv6 = DeConv(8, 3, 3, 2,1,1) #3,65,240,240
         self.deconv7 = nn.Conv3d(3,1,3,1,1)
 
-        self.decoder_linear = nn.Linear(512, 256*3*3*3)
+        self.decoder_linear = nn.Linear(512, 8192)
 
     def forward(self, x):
         x = self.decoder_linear(x)
-        x = x.view(1,256,3,3,3)
+        x = x.view(1,256,4,4,2)
         x = self.deconv1(x)
         x = self.deconv2(x)
         x = self.deconv3(x)
@@ -131,7 +131,7 @@ def save_image(img, ref_img, name):
 if __name__=="__main__":
     device = torch.device('cuda')
     torch.manual_seed(41)
-    random_tensor = torch.rand(1,1,160,192,160).to(device)
+    random_tensor = torch.rand(1,1,240,240,64).to(device)
     encoder = Encoder().to(device)
     decoder = Decoder().to(device)
     x = encoder(random_tensor)  # 1,512
