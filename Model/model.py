@@ -98,7 +98,7 @@ class U_Network(nn.Module):
 
 
 class SpatialTransformer(nn.Module):
-    def __init__(self, size, mode='bilinear'): # size is the vol_size(160,192,160)
+    def __init__(self, size, mode='bilinear'): # size is the vol_size(240,240,64)
         super(SpatialTransformer, self).__init__()
         # Create sampling grid
         vectors = [torch.arange(0, s) for s in size]
@@ -116,7 +116,7 @@ class SpatialTransformer(nn.Module):
 
     def forward(self, src, flow):
 
-        new_locs = self.grid + flow #[1,3,160,192,160]
+        new_locs = self.grid + flow #[1,3,240,240,64]
 
         shape = flow.shape[2:]
 
