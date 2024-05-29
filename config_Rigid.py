@@ -11,7 +11,7 @@ embed_dim (int): Patch embedding dimension. Default: 96
 depths (tuple(int)): Depth of each Swin Transformer layer.
 num_heads (tuple(int)): Number of attention heads in different layers.
 window_size (tuple(int)): Image size should be divisible by window size, 
-                     e.g., if image has a size of (160, 192, 224), then the window size can be (5, 6, 7)
+                     e.g., if image has a size of (240,240,64), then the window size can be (5, 6, 7)
 mlp_ratio (float): Ratio of mlp hidden dim to embedding dim. Default: 4
 pat_merg_rf (int): Embed_dim reduction factor in patch merging, e.g., N*C->N/4*C if set to four. Default: 4. 
 qkv_bias (bool): If True, add a learnable bias to query, key, value. Default: True
@@ -24,7 +24,7 @@ use_checkpoint (bool): Whether to use checkpointing to save memory. Default: Fal
                        (Carried over from Swin Transformer, it is not needed)
 out_indices (tuple(int)): Indices of Transformer blocks to output features. Default: (0, 1, 2, 3)
 reg_head_chan (int): Number of channels in the registration head (i.e., the final convolutional layer) 
-img_size (int | tuple(int)): Input image size, e.g., (160, 192, 224)
+img_size (int | tuple(int)): Input image size, e.g., (240,240,64)
 '''
 
 def get_3DACSwinNetRigid_config():
@@ -51,5 +51,5 @@ def get_3DACSwinNetRigid_config():
     config.use_checkpoint = False
     config.out_indices = (0, 1, 2,3)
     config.reg_head_chan = 16
-    config.img_size = (160, 160, 160)
+    config.img_size = (240,240,64)
     return config

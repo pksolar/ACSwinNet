@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--test_images_file', type=str, default="dataset/test/*.nii.gz")
     parser.add_argument('--model_file', type=str,default="pth")
     parser.add_argument('--batch_size', type=int, default=1)
-    parser.add_argument('--input_size', type=int, default=(160, 192, 160))
+    parser.add_argument('--input_size', type=int, default=(240,240,64))
     parser.add_argument('--device', type=str, default='cuda')
     parser.add_argument('--results_dir', type=str, default="result_test/")
     parser.add_argument('--ref_img_path', type=str, default="")

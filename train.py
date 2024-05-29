@@ -46,7 +46,7 @@ def main():
     parser.add_argument('--image_weight', type=float, default=1.0)
     parser.add_argument('--ae_weight', type=float, default=0.1)
     parser.add_argument('--dice_weight', type=float, default=1.0)
-    parser.add_argument('--input_size', type=int, default=(160,192,160))
+    parser.add_argument('--input_size', type=int, default=(240,240,64))
     parser.add_argument('--device', type=str, default='cuda')
     parser.add_argument('--results_dir', type=str,default="result/")
     parser.add_argument('--save_model', action='store_true')

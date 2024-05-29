@@ -1,4 +1,4 @@
-input_size = (160,192,160)
+input_size = (240,240,64)
 num_labels = 5
 image_weight = 1
 label_weight = 0.1
