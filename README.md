@@ -61,7 +61,7 @@ Set up your environment:
  python ./infer.py --test_images_file dataset/test/*.nii.gz --model_file pth   --results_dir result_test/ --ref_img_path path/to/ref_img
 ```
 ## Data
-We are currently in the process of applying to make the dataset public. Once the application is approved, we will promptly update the dataset in the code repository.
+https://zenodo.org/records/13231287
 
 ## Acknowledgment
 
